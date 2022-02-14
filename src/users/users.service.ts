@@ -11,12 +11,6 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    const user = await this.UserModel.findOne({username: createUserDto.username})
-    if(user){
-      return {
-        message:"用户名已存在请更换用户名"
-      }
-    }
     return this.UserModel.create(createUserDto);
   }
 

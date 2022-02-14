@@ -1,16 +1,8 @@
-import {Injectable} from '@nestjs/common';
-import {Express} from 'express'
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  upload(file: Express.Multer.File) {
-    if (!file?.filename) {
-      return {message: '请上传文件'}
-    }
-    const url = `http://localhost:3007/uploads/${file?.filename}`
-    return {
-      ...file,
-      url
-    }
+  getHello(): string {
+    return 'Hello World!';
   }
 }

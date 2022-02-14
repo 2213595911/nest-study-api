@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import {Module} from '@nestjs/common';
 import {LoginController} from './login.controller';
 import {MongooseModule} from "@nestjs/mongoose";
 import {User, UserSchema} from "../users/user.model";
@@ -8,7 +8,6 @@ import {LocalStrategy} from "./local.strategy";
 import {JwtModule} from "@nestjs/jwt";
 import {jwtConstants} from "./constants";
 import {JwtStrategy} from "./jwt.strategy";
-// import {LoggerMiddleware} from "../../common/middleware/logger.middleware";
 
 @Module({
   imports: [MongooseModule.forFeature([{name: User.name, schema: UserSchema}]),
