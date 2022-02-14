@@ -13,4 +13,8 @@ export class AppService {
       url
     }
   }
+
+  getHello() {
+    return 'hello world'
+  }
 }

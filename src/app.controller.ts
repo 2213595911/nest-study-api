@@ -1,7 +1,7 @@
 import {Controller, Get, Post, UploadedFile, UseInterceptors} from '@nestjs/common';
 import {Express} from 'express'
 import {AppService} from './app.service';
-import {ApiOperation,  ApiTags} from '@nestjs/swagger';
+import {ApiOperation, ApiTags} from '@nestjs/swagger';
 import {FileInterceptor} from "@nestjs/platform-express";
 import {ApiImplicitFile} from "@nestjs/swagger/dist/decorators/api-implicit-file.decorator";
 
@@ -9,6 +9,11 @@ import {ApiImplicitFile} from "@nestjs/swagger/dist/decorators/api-implicit-file
 @ApiTags('默认')
 export class AppController {
   constructor(private readonly appService: AppService) {
+  }
+
+  @Get("/hello")
+  getHello() {
+    return this.appService.getHello()
   }
 
   @Get('/')
