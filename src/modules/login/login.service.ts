@@ -18,16 +18,19 @@ export class LoginService {
     password: string,
   ): Promise<{ message: string } | LoginDto> {
     const user = await this.UserModel.findOne({ username: username });
-    if (!user)
+
+    if (!user) {
       return {
         message: '用户不存在',
       };
+    }
     const isValid = bcrypt.compareSync(password, user.password);
     if (!isValid) {
       return {
         message: '密码错误',
       };
     }
+
     return user;
   }
 
