@@ -8,10 +8,10 @@ import {
   Get,
   Param,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { LoginDto } from './dto/login.dto';
-import { JwtAuthGuard, LocalAuthGuard } from './login.guard';
-import { LoginService } from './login.service';
+import {ApiBearerAuth, ApiOperation, ApiTags} from '@nestjs/swagger';
+import {LoginDto} from './dto/login.dto';
+import {JwtAuthGuard, LocalAuthGuard} from './login.guard';
+import {LoginService} from './login.service';
 
 interface Request {
   user: LoginDto;
@@ -20,17 +20,20 @@ interface Request {
 @Controller('auth')
 @ApiTags('登录')
 export class LoginController {
-  constructor(private readonly LoginService: LoginService) {}
+  constructor(private readonly LoginService: LoginService) {
+  }
 
   @Post('login')
-  @ApiOperation({ summary: '登录' })
+  @ApiOperation({summary: '登录'})
   @UseGuards(LocalAuthGuard)
   login(@Body() LoginDto: LoginDto, @Req() req: Request) {
     return this.LoginService.Login(req.user);
   }
 
   @Get('profile/:id')
-  @ApiOperation({ summary: '用户个人信息' })
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({summary: '用户个人信息'})
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   async getProfile(@Param('id') id: string) {
     return await this.LoginService.getProfile(id);
