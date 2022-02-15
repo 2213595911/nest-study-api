@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {HttpException, Injectable} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
 import {UpdateUserDto} from './dto/update-user.dto';
 import {InjectModel} from "@nestjs/mongoose";
@@ -12,10 +12,8 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const user = await this.UserModel.findOne({username: createUserDto.username})
-    if(user){
-      return {
-        message:"用户名已存在请更换用户名"
-      }
+    if (user) {
+      throw new HttpException('用户名已存在，请更换用户名', 403)
     }
     return this.UserModel.create(createUserDto);
   }

@@ -3,6 +3,7 @@ import {AppModule} from './app.module';
 import setupPlguins from './plugins';
 import {logger} from './common/middleware/logger.middleware'
 import {HttpExceptionFilter} from "./common/filter/http-exception.filter";
+import {TransformInterceptor} from "./common/interceptor/transform.interceptor";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {cors: true});
@@ -15,6 +16,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   // 全局守卫
   // app.useGlobalGuards(new RolesGuard())
+  // 全局拦截器
+  app.useGlobalInterceptors(new TransformInterceptor())
 
   setupPlguins(app);
   await app.listen(3007);
