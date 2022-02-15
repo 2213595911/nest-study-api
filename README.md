@@ -3,6 +3,7 @@
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
@@ -24,12 +25,35 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+这个项目是我在学习[Nest](https://github.com/nestjs/nest) 的过程中按照官方文档一步一步写的，虽然比较简陋，但是涵盖的功能已经和官网文档内容一致。
+
+## Feature Implements
+
+- [x] 用户CRUD
+- [x] 帖子CRUD
+- [x] Jwt和Local策略（token验证
+- [x] 文件上传 (multerModule)
+- [x] 静态资源托管(staticModule)
+- [x] 日志(logger)
+- [x] 中间件 (middlewareModule)
+- [x] 异常过滤器 (exceptionFilter)
+- [x] 管道 (类型转换, 验证 (validatorPipe))
+- [x] 守卫 (guardModule
+- [x] 发送邮件 (mailer)
+- [x] 配置文件统一管理 (configModule)
+- [x] 服务监控 (monitor) (bug:无法监听)
+- [x] 定时任务 (schedule)
+- [x] 返回数据格式统一华 (拦截器)
+- [ ] 任务队列 (没有了解过redis)
+- [ ] 在线聊天室（技术/服务器端事件发送）
+- [ ] 消息转发（技术/http模块
 
 ## Installation
 
 ```bash
 $ npm install
+# or
+$ yarn
 ```
 
 ## Running the app
@@ -37,12 +61,18 @@ $ npm install
 ```bash
 # development
 $ npm run start
+# or 
+$ yarn run start
 
 # watch mode
 $ npm run start:dev
+# or 
+$ yarn run start:dev
 
 # production mode
 $ npm run start:prod
+# or 
+$ yarn run start:prod
 ```
 
 ## Test
@@ -58,16 +88,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+api
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- 文档地址 - /docs
+- 服务状态 - /api/status
