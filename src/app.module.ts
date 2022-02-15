@@ -14,11 +14,14 @@ import {GuardModule} from "./modules/guard/guard.module";
 import {EmailModule} from "./modules/email/email.module";
 import configModule from './config/index'
 import {MailerModule} from "@nestjs-modules/mailer";
+import {StatusMonitorModule} from "nest-status-monitor";
+import StatusMonitorConfig from "./config/statusMonitor.config";
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/nest-blog-api'),
-
+    // 服务监视
+    StatusMonitorModule.setUp(StatusMonitorConfig),
     // 上传文件
     MulterModule.register({
       dest: 'uploads/',
